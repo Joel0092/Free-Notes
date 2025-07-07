@@ -1,0 +1,580 @@
+#note-container {
+  border-radius: 0;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 2px 8px 0 rgba(0,0,0,0.16), 0 0.5px 2px 0 rgba(0,0,0,0.10), -16px 0 32px -8px rgba(0,0,0,0.18);
+  min-width: 320px;
+  padding: 8px 18px 8px 18px;
+  font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif;
+  border: none;
+  position: fixed;
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1), opacity 0.5s cubic-bezier(.4,2,.6,1);
+  top: 46px !important;
+}
+#note-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 6px;
+  background: #fff !important;
+  border-radius:10px 10px 0 0;
+  padding:0 0 0 0;
+  box-shadow:none;
+  min-height: 0;
+}
+#note-header .note-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+#note-header span {
+  font-weight: bold;
+  font-size: 16px;
+}
+#note-header button {
+  margin-left: 6px;
+  background: #ffe58f;
+  border: 1px solid #e0c97f;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+#note-list {
+  margin-bottom: 4px;
+}
+.note-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 8px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  border-left: none;
+  position: relative;
+  transition: none;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+.note-item .note-header-row,
+.note-item .note-header-row-left {
+  height: 16px !important;
+  min-height: 16px !important;
+  align-items: center !important;
+  display: flex;
+}
+.note-item .note-header-row input,
+.note-item .note-header-row button,
+.note-item .note-header-row .note-action {
+  height: 8px;
+  min-height: 0;
+  max-height: 8px;
+  font-size: 8px;
+  padding: 0;
+}
+.note-item .note-header-row {
+  display: flex;
+  align-items: flex-start !important;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  justify-content: space-between;
+  height: auto;
+  min-height: 0;
+  line-height: normal;
+}
+.note-item .note-header-row-left {
+  display: flex;
+  align-items: flex-start !important;
+  gap: 14px;
+  height: auto;
+}
+.note-item .note-date,
+.note-item .font-size-inc,
+.note-item .font-size-dec,
+.note-item .note-header-row button,
+.note-item .note-header-row .note-action,
+.note-item .note-add-inline,
+.note-item .note-del {
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 12px !important;
+  box-sizing: border-box;
+  padding: 0 4px !important;
+  margin: 0 2px 0 0 !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  position: relative;
+  top: -5px;
+}
+.note-item .note-add-inline {
+  font-weight: bold !important;
+}
+.note-item .note-del {
+  color: #ff4d4f !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 50% !important;
+  justify-content: center !important;
+  width: 32px !important;
+}
+.note-item .note-date {
+  background: transparent;
+  color: #222;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 16px;
+  min-width: 92px;
+  z-index: 2;
+  box-sizing: content-box;
+  outline: none;
+  box-shadow: none;
+  margin: 0 4px 0 0 !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  top: -5px;
+}
+/* 兼容webkit日期选择器垂直居中 */
+.note-item .note-date::-webkit-input-placeholder { line-height: 32px; }
+.note-item .note-date::-webkit-datetime-edit { display: flex; align-items: center; height: 32px; }
+.note-item .note-date:focus,
+.note-item .note-date:hover {
+  border: none;
+  box-shadow: none;
+}
+.note-item .font-size-inc,
+.note-item .font-size-dec {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 16px !important;
+  padding: 0 8px !important;
+  box-sizing: border-box;
+  margin: 0 0 0 0 !important;
+  background: none !important;
+  border: none !important;
+  height: 28px !important;
+  min-width: 32px;
+}
+.note-item .font-size-inc:hover,
+.note-item .font-size-dec:hover {
+  border-color: #1677ff;
+  background: #e6f4ff;
+}
+.note-item textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  max-height: 800px !important;
+  resize: none;
+  border: none;
+  border-radius: 0;
+  padding: 0px 8px 4px 8px;
+  font-size: 15px;
+  background: #f6f8fa;
+  color: #222;
+  outline: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
+  transition: none;
+  overflow-y: hidden;
+  line-height: 1.6;
+  margin: 0;
+  box-sizing: border-box;
+  padding-top: 0px;
+  overflow-y: auto !important;
+  scrollbar-width: none; /* Firefox */
+}
+.note-item textarea::-webkit-scrollbar {
+  display: none; /* Chrome/Edge */
+}
+.note-item textarea:focus {
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
+}
+.note-item .note-del {
+  margin-left: 8px;
+  background: none;
+  color: #ff4d4f;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1), color 0.2s;
+}
+.note-item .note-del:hover {
+  transform: scale(1.18);
+  color: #ff4d4f;
+  background: none;
+}
+#note-add, .note-add-btn {
+  width: 22px;
+  height: 22px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px auto 4px auto;
+}
+#note-add:hover, .note-add-btn:hover {
+  transform: scale(1.18);
+  color: #222;
+  background: #e6f4ff;
+}
+#note-show-btn {
+  position: fixed;
+  top: 0 !important;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  background: #ffe58f;
+  border: 1px solid #e0c97f;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+#note-show-btn:hover {
+  opacity: 1;
+}
+.note-item .font-size-inc:hover,
+.note-item .font-size-dec:hover {
+  background: none;
+  color: #222;
+  transform: scale(1.18);
+}
+
+/* 分类栏整体下移，与容器顶部平齐 */
+#note-category-bar {
+  position: fixed !important;
+  top: 58px;
+  left: calc(50% - 220px - 72px);
+  width: 72px;
+  min-width: 60px;
+  max-width: 100px;
+  z-index: 1000000 !important;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1), opacity 0.5s cubic-bezier(.4,2,.6,1);
+}
+
+/* 分类标签美化：右侧大圆角，左侧略收窄，字体不换行 */
+.note-category-btn,
+#note-category-bar > button:last-child {
+  border-radius: 0 26px 26px 12px;
+  padding: 8px 22px 8px 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  background: var(--cat-bg) !important;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+  border: none;
+  margin: 0;
+  margin-bottom: 2px;
+  transition: 
+    background 0.25s, 
+    color 0.25s, 
+    box-shadow 0.35s cubic-bezier(.4,2,.6,1), 
+    transform 0.35s cubic-bezier(.4,2,.6,1), 
+    font-size 0.25s, 
+    z-index 0.25s, 
+    filter 0.25s;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 悬停效果 */
+.note-category-btn:hover,
+#note-category-bar > button:last-child:hover {
+  color: #fff;
+  filter: brightness(1.12) saturate(1.1);
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.16);
+  transform: translateX(4px) scale(1.04);
+  z-index: 2;
+}
+
+/* 激活（选中）分类标签：仅高亮放大，避免遮挡内容 */
+.note-category-btn.active {
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  filter: brightness(1.18) saturate(1.2);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.22), 0 2px 8px -2px rgba(0,0,0,0.10);
+  transform: scale(1.08);
+  z-index: 10;
+  border-radius: 0 32px 32px 16px;
+}
+
+/* 新建分类按钮（加号）悬停时字体变蓝 */
+#note-category-bar > button:last-child:hover {
+  color: #1677ff;
+  background: var(--cat-bg) !important;
+  filter: brightness(1.12) saturate(1.1);
+}
+
+.note-action,
+.note-inline-action {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1);
+  font-family: 'Segoe UI', '微软雅黑', Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #222 !important;
+}
+.note-action:hover,
+.note-inline-action:hover {
+  transform: scale(1.18);
+  color: inherit !important;
+  background: none !important;
+  text-decoration: none !important;
+}
+
+/* 悬浮卡片动画：只上下平移 */
+#note-container {
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1), opacity 0.5s cubic-bezier(.4,2,.6,1);
+}
+.note-container-anim-in {
+  opacity: 1;
+  display: block !important;
+}
+.note-container-anim-out {
+  opacity: 0;
+  pointer-events: none;
+  display: block !important;
+}
+/* 箭头动画：只上下平移 */
+#note-arrow.anim-down {
+  transform: translateY(8px);
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+}
+#note-arrow.anim-up {
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+}
+
+/* 只遮住非第一个未选中分类，.covered类控制 */
+.note-category-btn.covered {
+  z-index: 1;
+  position: relative;
+  margin-right: -64px;
+  clip-path: inset(0 56px 0 0);
+  transition: margin 0.3s, clip-path 0.3s, z-index 0.3s;
+}
+.note-category-btn.active {
+  z-index: 1001;
+  margin-right: 0;
+  clip-path: none;
+}
+
+/* 分类栏弹出/收起动画与容器同步 */
+#note-category-bar.anim-in {
+  opacity: 1;
+  transform: translateY(8px);
+  display: flex !important;
+}
+#note-category-bar.anim-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0);
+  display: flex !important;
+}
+
+/* 日期选择器图标按钮放大动画且不变色 */
+input.note-date[type="date"]::-webkit-calendar-picker-indicator {
+  transition: transform 0.18s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;
+  filter: none !important;
+}
+input.note-date[type="date"]:hover::-webkit-calendar-picker-indicator {
+  transform: scale(1.18);
+  filter: none !important;
+}
+
+/* 设置栏按钮平行对齐 */
+.note-header-row .note-action {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.note-add-inline {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  padding: 0 4px !important;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: flex-start !important;
+  justify-content: center;
+  width: auto;
+  height: 16px !important;
+  box-sizing: border-box;
+  line-height: 1 !important;
+  vertical-align: top !important;
+}
+.note-add-inline > * {
+  vertical-align: top !important;
+  line-height: 1 !important;
+}
+.note-add-inline:hover {
+  transform: scale(1.18);
+  color: inherit !important;
+  background: none !important;
+  text-decoration: none !important;
+}
+
+/* 手型光标（手指向上） */
+.grab {
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+.grabbing {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+/* 缩放手柄样式 */
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  cursor: se-resize;
+  z-index: 10;
+  background: linear-gradient(135deg, transparent 60%, #bbb 60%, #bbb 100%);
+  border-bottom-right-radius: 6px;
+  user-select: none;
+}
+
+/* 保证textarea自适应 */
+.card-container textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* 移除header按钮的高度/对齐冲突 */
+.note-item .note-header-row button,
+.note-item .note-header-row .note-action,
+.note-item .note-add-inline {
+  height: auto !important;
+  align-items: unset !important;
+  vertical-align: unset !important;
+  line-height: normal !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: 16px !important;
+  box-sizing: border-box;
+}
+.note-header-row .note-action {
+  display: flex;
+  align-items: unset !important;
+  vertical-align: unset !important;
+}
+/* 只在A- A+按钮上设置高度和padding */
+.note-item .font-size-inc,
+.note-item .font-size-dec {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 16px !important;
+  padding: 0 8px !important;
+  box-sizing: border-box;
+  margin: 0 0 0 0 !important;
+  background: none !important;
+  border: none !important;
+  height: 28px !important;
+  min-width: 32px;
+}
+/* 只保留唯一一组上移设置并加!important，防止被覆盖 */
+.note-item .font-size-inc,
+.note-item .font-size-dec {
+  position: relative !important;
+  top: -8px !important;
+}
+.note-item .note-add-inline,
+.note-item .note-del {
+  position: relative !important;
+  top: -5px !important;
+}
+#note-export,
+#note-import {
+  position: static !important;
+  top: auto !important;
+} 
+.note-item .note-header-row-left {
+  height: 16px !important;
+  min-height: 16px !important;
+  align-items: center !important;
+  display: flex;
+  gap: 2px !important;
+}
+.note-item .note-date,
+.note-item .font-size-inc,
+.note-item .font-size-dec {
+  padding: 0 2px !important;
+} 
+.note-item .font-size-dec {
+  margin-right: 0 !important;
+}
+.note-item .font-size-inc {
+  margin-left: 0 !important;
+}
+.note-item .note-header-row-left {
+  gap: 0 !important;
+} 
+.note-item .font-size-inc,
+.note-item .font-size-dec {
+  min-width: unset !important;
+  padding: 0 2px !important;
+} 
+/* 分类栏拖动排序时的高亮和动画 */
+.note-category-btn.grabbing {
+  opacity: 0.6;
+  background: #bae7ff !important;
+  box-shadow: 0 8px 32px 0 rgba(24,144,255,0.22), 0 2px 8px -2px rgba(24,144,255,0.10);
+  transform: scale(1.08) rotate(-3deg);
+  z-index: 1002;
+  transition: box-shadow 0.25s, background 0.25s, opacity 0.18s, transform 0.18s;
+}
+.note-category-btn.drag-over {
+  outline: 2.5px dashed #1677ff;
+  outline-offset: -3px;
+  background: #e6f7ff !important;
+  box-shadow: 0 0 0 4px #91d5ff44;
+  transition: outline 0.18s, background 0.18s, box-shadow 0.18s;
+} 
