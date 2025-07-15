@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Free Notes",
+  "version": "1.0",
+  "description": "在任意网页书签栏下方显示可收纳的便签卡片，支持编辑、导入导出、多分类管理。",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["note.css"]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_title": "Free Notes"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "author": "Watson"
+} 
